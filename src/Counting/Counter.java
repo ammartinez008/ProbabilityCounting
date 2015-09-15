@@ -1,5 +1,6 @@
 package Counting;
 
-public class Counter {
-
+public interface Counter {
+    public void addValue();
+    public void contains();
 }

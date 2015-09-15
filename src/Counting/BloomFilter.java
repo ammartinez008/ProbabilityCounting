@@ -5,7 +5,7 @@ import Utilities.HashingLibrary;
 import java.nio.ByteBuffer;
 import java.util.BitSet;
 
-public class BloomFilter {
+public class BloomFilter implements Counter{
 
 	public int filterSize;
 	public double stdError;
