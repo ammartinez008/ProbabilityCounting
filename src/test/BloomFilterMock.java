@@ -1,21 +1,15 @@
 package test;
 
-import static org.junit.Assert.*;
-
+import Counting.BloomFilter;
+import Counting.DataGenerator;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-
-import static org.mockito.Mockito.*;
 
 import java.util.HashSet;
 
-import Counting.BloomFilter;
-import Counting.DataGenerator;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class BloomFilterMock {
 	BloomFilter bloom;
@@ -29,11 +23,7 @@ public class BloomFilterMock {
 		dataGen = new DataGenerator(300);
 		testValues = dataGen.generateData();
 	}
-	
-	public void generateInvalidNums() {
-		uncontainedVals = dataGen.generateData();
-	}
-	
+
 	
 	//test adding, contains values in filter
 	@Ignore

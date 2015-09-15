@@ -1,17 +1,16 @@
 package test;
 
-import static org.junit.Assert.*;
-
-import java.math.BigInteger;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.HashSet;
-
+import Utilities.HashingLibrary;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import Utilities.HashingLibrary;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.BitSet;
+import java.util.HashSet;
+
+import static org.junit.Assert.assertTrue;
 
 public class HashingLibraryTest {
 
@@ -28,15 +27,13 @@ public class HashingLibraryTest {
 		Long hashval;
 		HashSet set = new HashSet();
 		
-		for(int i = 0; i < 300; ++ i) {
+		for(int i = 0; i < 3000; ++ i) {
 			byte[] bytes = ByteBuffer.allocate(4).putInt(i).array();
 			hashval = hasher.strongHash64(bytes);
 			assertTrue(hashval instanceof Long);
-			String h = Long.toUnsignedString(hashval);
-			set.add(h);
-			System.out.println(h + " is a legit hashvalue");
+			set.add(hashval);
 		}
-		System.out.println(set.size() + " unique values");
+	//	System.out.println(set.size() + " unique values");
 	}
 
 	@Ignore
@@ -47,15 +44,19 @@ public class HashingLibraryTest {
 		System.out.println(Arrays.toString(table));
 	}
 	
-	@Ignore
+
 	@Test
 	public void simpleHash3Test() {
 		Integer hashval;
 		HashSet set = new HashSet();
-		for(int i = 0; i < 300000; ++ i) {
-			hashval = hasher.simpleHash3(i);
+		BitSet bset = new BitSet(1000);
+
+		for(int i = 0; i < 30000; ++ i) {
+			hashval = hasher.simpleHash3(i,i % 5);
+			bset.set(hashval);
 			set.add(hashval);
 			assertTrue(hashval instanceof Integer);
+			//System.out.println("hashval was genereated: " + hashval + " with hashcode: " + bset.hashCode());
 		}
 		
 		System.out.println(set.size() + " unique values");

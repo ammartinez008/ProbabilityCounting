@@ -1,9 +1,9 @@
 package Counting;
 
+import Utilities.HashingLibrary;
+
 import java.nio.ByteBuffer;
 import java.util.BitSet;
-
-import Utilities.HashingLibrary;
 
 public class BloomFilter {
 
@@ -27,7 +27,7 @@ public class BloomFilter {
 		this.filterSize = generateFilterSize(size, stdError);
 		this.hashMask = filterSize - 1;
 		this.hashNumbers = generateHashNumbers(filterSize, size);
-		this.filter = new BitSet(filterSize);
+		this.filter = new BitSet();
 		this.hasher = new HashingLibrary();
 	}
 	
@@ -89,9 +89,7 @@ public class BloomFilter {
 		
 	// setters and getters
 	public int hashValue(int value, int hashIndex) {
-		//todo: need new hash method
-		byte[] bytes = ByteBuffer.allocate(4).putInt(value).array();
-		return Integer.valueOf((Long.toUnsignedString(hasher.strongHash64(bytes)))) % filterSize;
+		return hasher.simpleHash3(value, hashIndex);
 	}
 	
 	public int getFilterSize() {

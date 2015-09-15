@@ -1,16 +1,13 @@
 package test;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
+import Counting.BloomFilter;
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-
-import Counting.BloomFilter;
-import static junitparams.JUnitParamsRunner.$;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnitParamsRunner.class)
 public class BloomFilterTest {

@@ -1,5 +1,7 @@
 package Utilities;
 
+import java.util.BitSet;
+
 public class HashingLibrary {
 	private static final long HSTART = 0xBB40E64DA205B064L;
 	private static final long HMULT = 7664345821815920749L;
@@ -21,11 +23,10 @@ public class HashingLibrary {
 	}
 	
 	//third example of a hash function
-	public int simpleHash3(int value) {
-	  int constant = 1;
-	  final int prime = 31;
-	  
-	  value = constant * 31 + value;
+	public int simpleHash3(int value, int salt) {
+	  int constant = 17;
+	  final int prime = 37;
+	  value = (int) (constant * prime + value) + salt ;
 	  return value;
 	}
 	
