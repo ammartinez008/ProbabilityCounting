@@ -31,6 +31,8 @@ public class BloomFilterTest {
 				new Object[] {100, .2},
 				new Object[] {1000, .06},
 				new Object[] {1011, .001},
+				new Object[] {10000, .001},
+				new Object[] {5000, .001},
 		};
 	}
 	
@@ -47,4 +49,15 @@ public class BloomFilterTest {
 	public void testIllegalArguments(int size, double stderr) {
 		new BloomFilter(size, stderr);
 	}
+	
+	@Test
+	@Parameters(method = "validParams")
+	public void testFilterSize(int size, double stderr) {
+		filter = new BloomFilter(size, stderr);
+		assertTrue("Filter is too small: " + 
+		filter.getFilterSize() + " for param: " + size, 
+				filter.getFilterSize() > size);
+				
+	}
+	
 }

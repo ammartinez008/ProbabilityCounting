@@ -15,7 +15,7 @@ public class DataGenerator {
 		Random rand = new Random();
 		
 		for(int i = 0; i < size; ++ i) {
-			data[i] = rand.nextInt(1000 - 0);
+			data[i] = rand.nextInt(100000 - 0);
 		}
 		
 		return data;
