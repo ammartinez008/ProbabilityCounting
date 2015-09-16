@@ -2,10 +2,9 @@ package Counting;
 
 import Utilities.HashingLibrary;
 
-import java.nio.ByteBuffer;
 import java.util.BitSet;
 
-public class BloomFilter implements Counter{
+public class BloomFilter implements CounterStrategy {
 
 	public int filterSize;
 	public double stdError;
@@ -49,7 +48,7 @@ public class BloomFilter implements Counter{
 	}
 	
 	//filter logic
-	public void addValue(int val) {
+	public void add(int val) {
 		int hashCode = 0;
 		
 		for(int i = 0; i < hashNumbers; ++ i) {

@@ -1,6 +1,6 @@
 package Counting;
 
 public interface CounterStrategy {
-	public void execute();
-	
+     void add(int val);
+     boolean contains(int val);
 }

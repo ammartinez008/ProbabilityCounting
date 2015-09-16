@@ -1,5 +1,7 @@
 package Counting;
 
+import Utilities.DataGenerator;
+
 import java.util.Arrays;
 
 public class Controller {
@@ -13,7 +15,7 @@ public class Controller {
 		System.out.println("size is: " + bloom.getFilterSize() + " and hasNumbers are: " + bloom.getHashNumbers());
 		System.out.println("Data injected: " + Arrays.toString(values));
 		for(int val: values) {
-			bloom.addValue(val);
+			bloom.add(val);
 		}
 		for(int val: values) {
 			if(!bloom.contains(val)) {

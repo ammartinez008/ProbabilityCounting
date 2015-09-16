@@ -1,7 +1,7 @@
 package test;
 
 import Counting.BloomFilter;
-import Counting.DataGenerator;
+import Utilities.DataGenerator;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -30,7 +30,7 @@ public class BloomFilterMock {
 	@Test
 	public void testAdd() {
 		for(int i = 0; i < testValues.length; ++ i) {
-			bloom.addValue(testValues[i]);
+			bloom.add(testValues[i]);
 		}
 		
 		for(int val: testValues) {
@@ -50,7 +50,7 @@ public class BloomFilterMock {
 		
 		for(int val : values) {
 			//System.out.println("Adding: " + val);
-			bloom.addValue(val);
+			bloom.add(val);
 		}
 		
 		System.out.println("size of set: " + values.size());
