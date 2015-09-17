@@ -34,17 +34,16 @@ public class BloomFilter implements CounterStrategy {
 	public int generateFilterSize(int size, double stdError) {
 		int filterSize = 0;
 		double stdErrLog = Math.log(stdError);
-		double ln2 = ln2();
-		filterSize = (int) (-1 * ((size * stdErrLog) / ln2));
+		double ln2Squared = ln2() * ln2();
+		filterSize = (int) (-1 * ((size * stdErrLog) / ln2Squared));
 		
 		return filterSize;
 	}
 	
 	// generates number of hash functions 
 	// (number of bits that will be checked per added value)
-	public int generateHashNumbers(int FilterSize, int size) {
-		double ln2 = ln2();
-		return (int) ((filterSize/size) * ln2);
+	public int generateHashNumbers(int filterSize, int size) {
+		return (int) ((filterSize/size) * ln2());
 	}
 	
 	//filter logic
@@ -78,10 +77,7 @@ public class BloomFilter implements CounterStrategy {
 	
 	//math functions
 	public double ln2() {
-		double val = 0;
-		
-		val = Math.log(2);
-		return val * val;
+		return Math.log(2);
 	}
 	
 

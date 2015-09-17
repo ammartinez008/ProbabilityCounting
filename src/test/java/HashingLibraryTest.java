@@ -1,4 +1,4 @@
-package test;
+package test.java;
 
 import Utilities.HashingLibrary;
 import org.junit.Before;

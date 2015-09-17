@@ -1,4 +1,4 @@
-package test;
+package test.java;
 
 import Counting.BloomFilter;
 import junitparams.JUnitParamsRunner;
@@ -32,7 +32,8 @@ public class BloomFilterTest {
 				new Object[] {5000, .001},
 		};
 	}
-	
+
+
 	@Test
 	@Parameters(method = "validParams")
 	public void test(int size, double stderr) {
@@ -56,5 +57,29 @@ public class BloomFilterTest {
 				filter.getFilterSize() > size);
 				
 	}
-	
+
+	//test natural log of two method
+	@Test
+	public void testNaturalLog() {
+		filter = new BloomFilter(10,0.01);
+		assertEquals(0.69314718056, filter.ln2(), 0.0002);
+
+	}
+
+	//test generating filter size
+	@Test
+	public void testCreatingSize() {
+		filter = new BloomFilter(10, 0.01);
+		assertTrue( filter.generateFilterSize(10, 0.01) > 0);
+		assertEquals(143, filter.generateFilterSize(10, 0.001));
+	}
+
+	//test hash count value
+	@Test
+	public void testHashCreationVal() {
+		filter = new BloomFilter(10, 0.001);
+		assertEquals(9, filter.generateHashNumbers(143,10));
+	}
+
+
 }

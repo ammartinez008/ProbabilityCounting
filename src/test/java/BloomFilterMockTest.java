@@ -1,4 +1,4 @@
-package test;
+package test.java;
 
 import Counting.BloomFilter;
 import Utilities.DataGenerator;
@@ -11,7 +11,7 @@ import java.util.HashSet;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class BloomFilterMock {
+public class BloomFilterMockTest {
 	BloomFilter bloom;
 	DataGenerator dataGen;
 	int[] testValues; 
