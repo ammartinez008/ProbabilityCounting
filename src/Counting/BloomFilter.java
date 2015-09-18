@@ -32,7 +32,7 @@ public class BloomFilter implements CounterStrategy {
 	
 	//creates filter size based off std error and size given
 	public int generateFilterSize(int size, double stdError) {
-		int filterSize = 0;
+		int filterSize;
 		double stdErrLog = Math.log(stdError);
 		double ln2Squared = ln2() * ln2();
 		filterSize = (int) (-1 * ((size * stdErrLog) / ln2Squared));
@@ -48,18 +48,16 @@ public class BloomFilter implements CounterStrategy {
 	
 	//filter logic
 	public void add(int val) {
-		int hashCode = 0;
+		int hashCode;
 		
 		for(int i = 0; i < hashNumbers; ++ i) {
 			hashCode = hashValue(val, i + 1 );
 			filter.set(hashCode);
 		}
-		
 	}
 	
 	//check if a given value is in the filter
 	public boolean contains(int val) {
-		
 		for(int i = 0; i < hashNumbers; ++ i) {
 			int hashNum = hashValue(val,i + 1);
 			if(!filter.get(hashNum))
@@ -68,20 +66,12 @@ public class BloomFilter implements CounterStrategy {
 		
 		return true;
 	}
-	
-	//return the cardinality
-	public int getCardinality() {
-	
-		return this.maxCardinality;
-	}
-	
+
 	//math functions
 	public double ln2() {
 		return Math.log(2);
 	}
-	
 
-		
 	// setters and getters
 	public int hashValue(int value, int hashIndex) {
 		return hasher.simpleHash3(value, hashIndex);
